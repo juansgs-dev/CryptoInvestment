@@ -10,7 +10,8 @@ import useCryptoList from "../hooks/useCryptoList.js";
 const CryptoHistoryView = () => {
   const [selected, setSelected] = useState("");
   const { cryptos } = useCryptoList();
-  const { info, loading } = useCryptoInfo(selected);
+  const [info, setInfo] = useState(null);
+  const { loading } = useCryptoInfo(selected, setInfo);
 
   useEffect(() => {
     if (cryptos.length && !selected) {
